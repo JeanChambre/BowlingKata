@@ -3,7 +3,7 @@
 public class BowlingGame {
 
     private int numberOfRolls = 0;
-    private int[] allRoles = new int[20];
+    private int[] allRoles = new int[21];
 
     public void pinsHit(int pins){
         allRoles[numberOfRolls++] = pins;
@@ -11,8 +11,8 @@ public class BowlingGame {
     public int calculateScore(){
         int score = 0;
         int pointer = 0;
-        for (int i = 0; i < 10 ; i++){
-            if(allRoles[pointer] == 10){
+        for (int frame = 0; frame < 10 ; frame++){
+            if(isStrike(pointer)){
                 score += 10 + allRoles[pointer + 1] + allRoles[pointer + 2];
                 pointer += 1;
             }
@@ -24,11 +24,12 @@ public class BowlingGame {
                 score += allRoles[pointer] + allRoles[pointer + 1];
                 pointer += 2;
             }
-
         }
         return  score;
     }
-
+    private boolean isStrike(int pointer) {
+        return allRoles[pointer] == 10;
+    }
     private boolean isSpare(int pointer) {
         return allRoles[pointer] + allRoles[pointer + 1] == 10;
     }

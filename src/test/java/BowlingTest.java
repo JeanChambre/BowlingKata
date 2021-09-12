@@ -14,41 +14,45 @@ public class BowlingTest {
     @Test
     public void scoringOne(){
         bowlingGame.pinsHit(1);
-        hittingMultiplePins(19,0);
+        throwingMultipaleTimes(19,0);
         assertEquals(1,bowlingGame.calculateScore());
     }
     @Test
     public void scoringAllOnes(){
-        hittingMultiplePins(20,1);
+        throwingMultipaleTimes(20,1);
         assertEquals(20,bowlingGame.calculateScore());
     }
     @Test
     public void scoringAllTwos(){
-        hittingMultiplePins(20,2);
+        throwingMultipaleTimes(20,2);
         assertEquals(40,bowlingGame.calculateScore());
     }
     @Test
     public void scoringSpareThenSix(){
-        hittingMultiplePins(2,5);
+        throwingMultipaleTimes(2,5);
         bowlingGame.pinsHit(6);
-        hittingMultiplePins(17,0);
+        throwingMultipaleTimes(17,0);
         assertEquals(22,bowlingGame.calculateScore());
     }
     @Test
     public void scoringStrikeThenTwoTimesFour(){
-        hittingMultiplePins(1,10);
-        hittingMultiplePins(2,4);
-
+        throwingMultipaleTimes(1,10);
+        throwingMultipaleTimes(2,4);
         assertEquals(26,bowlingGame.calculateScore());
     }
     @Test
     public void scoringPerfektGame(){
-        hittingMultiplePins(10,10);
+        throwingMultipaleTimes(12,10);
         assertEquals(300,bowlingGame.calculateScore());
     }
+    @Test
+    public void scoringAllFives(){
+        throwingMultipaleTimes(21,5);
+        assertEquals(150,bowlingGame.calculateScore());
+    }
 
-    private void hittingMultiplePins(int n, int pins) {
-        for(int i = 0; i < n; i++){
+    private void throwingMultipaleTimes(int times, int pins) {
+        for(int i = 0; i < times; i++){
             bowlingGame.pinsHit(pins);
         }
     }
