@@ -34,6 +34,19 @@ public class BowlingTest {
         hittingMultiplePins(17,0);
         assertEquals(22,bowlingGame.calculateScore());
     }
+    @Test
+    public void scoringStrikeThenTwoTimesFour(){
+        hittingMultiplePins(1,10);
+        hittingMultiplePins(2,4);
+
+        assertEquals(26,bowlingGame.calculateScore());
+    }
+    @Test
+    public void scoringPerfektGame(){
+        hittingMultiplePins(10,10);
+        assertEquals(300,bowlingGame.calculateScore());
+    }
+
     private void hittingMultiplePins(int n, int pins) {
         for(int i = 0; i < n; i++){
             bowlingGame.pinsHit(pins);

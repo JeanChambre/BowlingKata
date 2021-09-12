@@ -12,7 +12,11 @@ public class BowlingGame {
         int score = 0;
         int pointer = 0;
         for (int i = 0; i < 10 ; i++){
-            if(isSpare(pointer)){
+            if(allRoles[pointer] == 10){
+                score += 10 + allRoles[pointer + 1] + allRoles[pointer + 2];
+                pointer += 1;
+            }
+            else if(isSpare(pointer)){
                 score += 10 + allRoles[pointer + 2];
                 pointer += 2;
             }
@@ -20,7 +24,7 @@ public class BowlingGame {
                 score += allRoles[pointer] + allRoles[pointer + 1];
                 pointer += 2;
             }
-           
+
         }
         return  score;
     }
