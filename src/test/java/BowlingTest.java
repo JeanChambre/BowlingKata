@@ -13,32 +13,30 @@ public class BowlingTest {
     }
     @Test
     public void scoringOne(){
-        BowlingGame bowlingGame = new BowlingGame();
         bowlingGame.pinsHit(1);
-        assertEquals(1,bowlingGame.getScore());
+        hittingMultiplePins(19,0);
+        assertEquals(1,bowlingGame.calculateScore());
     }
     @Test
     public void scoringAllOnes(){
         hittingMultiplePins(20,1);
-        assertEquals(20,bowlingGame.getScore());
+        assertEquals(20,bowlingGame.calculateScore());
     }
-
-    private void hittingMultiplePins(int n, int pins) {
-        for(int i = 0; i < n; i++){
-            bowlingGame.pinsHit(pins);
-        }
-    }
-
     @Test
     public void scoringAllTwos(){
         hittingMultiplePins(20,2);
-        assertEquals(40,bowlingGame.getScore());
+        assertEquals(40,bowlingGame.calculateScore());
     }
     @Test
     public void scoringSpareThenSix(){
         hittingMultiplePins(2,5);
         bowlingGame.pinsHit(6);
-        assertEquals(22,bowlingGame.getScore());
+        hittingMultiplePins(17,0);
+        assertEquals(22,bowlingGame.calculateScore());
     }
-
+    private void hittingMultiplePins(int n, int pins) {
+        for(int i = 0; i < n; i++){
+            bowlingGame.pinsHit(pins);
+        }
+    }
 }
