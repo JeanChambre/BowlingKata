@@ -11,10 +11,22 @@ public class BowlingGame {
     public int calculateScore(){
         int score = 0;
         int pointer = 0;
-        for (int i = 0; i < 20 ; i++){
-            score += allRoles[i];
+        for (int i = 0; i < 10 ; i++){
+            if(isSpare(pointer)){
+                score += 10 + allRoles[pointer + 2];
+                pointer += 2;
+            }
+            else{
+                score += allRoles[pointer] + allRoles[pointer + 1];
+                pointer += 2;
+            }
+           
         }
         return  score;
+    }
+
+    private boolean isSpare(int pointer) {
+        return allRoles[pointer] + allRoles[pointer + 1] == 10;
     }
 
 }
